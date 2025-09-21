@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ee3767d5-8476-46a7-8b8d-db95cb2388c2" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2ngtwV6v8eiHwOtdpsffgwgRsn4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.TestDbColumnNames.columnsNames.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDbDiscoverersTable.testPlanetsTable.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDbForeignKeys.testForeignKeys.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDbForeignKeysPlanets.testForeignKeys.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDbMoonsTable.testPlanetsTable.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDbPlanetsTable.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDbPlanetsTable.testPlanetsTable.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDbPrimaryKeys.testPrimaryKeys.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDbTablesNames.tablesNames.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.SolarMoonsApplication.executor&quot;: &quot;Run&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/SpringDataRetakeDec2024/Skeleton/SolarMoons/src/test/java/sofuni/exam&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\SpringDataRetakeDec2024\Skeleton\SolarMoons\src\test\java\sofuni\exam" />
+      <recent name="C:\Users\User\Documents\SpringDataRetakeDec2024\Skeleton\SolarMoons\src\test" />
+      <recent name="C:\Users\User\Documents\SpringDataRetakeDec2024\Skeleton\SolarMoons\src\main\resources\files\xml" />
+      <recent name="C:\Users\User\Documents\SpringDataRetakeDec2024\Skeleton\SolarMoons\src\main\resources\files\json" />
+      <recent name="C:\Users\User\Documents\SpringDataRetakeDec2024\Skeleton\SolarMoons\src\test\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\SpringDataRetakeDec2024\SolarMoons\src\main\resources\static\pics" />
+      <recent name="C:\Users\User\Documents\SpringDataRetakeDec2024\SolarMoons\src\main\resources\files\json" />
+      <recent name="C:\Users\User\Documents\SpringDataRetakeDec2024\SolarMoons\src\main\resources\static" />
+      <recent name="C:\Users\User\Documents\SpringDataRetakeDec2024\SolarMoons\src\main\resources" />
+      <recent name="C:\Users\User\Documents\SpringDataRetakeDec2024\SolarMoons\src\main\java\sofuni\exam\web\controllers" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="sofuni.exam.database" />
+      <recent name="sofuni.exam.web.controllers" />
+      <recent name="sofuni.exam.models.entity" />
+      <recent name="sofuni.exam.web" />
+      <recent name="sofuni.exam.config" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SolarMoonsApplication">
+    <configuration name="TestDbDiscoverersTable.testPlanetsTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="solar_moons" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sofuni.exam.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sofuni.exam.database" />
+      <option name="MAIN_CLASS_NAME" value="sofuni.exam.database.TestDbDiscoverersTable" />
+      <option name="METHOD_NAME" value="testPlanetsTable" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDbForeignKeysMoons.testForeignKeys" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="solar_moons" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sofuni.exam.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sofuni.exam.database" />
+      <option name="MAIN_CLASS_NAME" value="sofuni.exam.database.TestDbForeignKeysMoons" />
+      <option name="METHOD_NAME" value="testForeignKeys" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDbForeignKeysPlanets.testForeignKeys" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="solar_moons" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sofuni.exam.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sofuni.exam.database" />
+      <option name="MAIN_CLASS_NAME" value="sofuni.exam.database.TestDbForeignKeysPlanets" />
+      <option name="METHOD_NAME" value="testForeignKeys" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDbMoonsTable.testPlanetsTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="solar_moons" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sofuni.exam.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sofuni.exam.database" />
+      <option name="MAIN_CLASS_NAME" value="sofuni.exam.database.TestDbMoonsTable" />
+      <option name="METHOD_NAME" value="testPlanetsTable" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDbTablesNames.tablesNames" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="solar_moons" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sofuni.exam.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sofuni.exam.database" />
+      <option name="MAIN_CLASS_NAME" value="sofuni.exam.database.TestDbTablesNames" />
+      <option name="METHOD_NAME" value="tablesNames" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SolarMoonsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="SolarMoons" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="sofuni.exam.SolarMoonsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestDbForeignKeysPlanets.testForeignKeys" />
+        <item itemvalue="JUnit.TestDbForeignKeysMoons.testForeignKeys" />
+        <item itemvalue="JUnit.TestDbDiscoverersTable.testPlanetsTable" />
+        <item itemvalue="JUnit.TestDbMoonsTable.testPlanetsTable" />
+        <item itemvalue="JUnit.TestDbTablesNames.tablesNames" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ee3767d5-8476-46a7-8b8d-db95cb2388c2" name="Changes" comment="" />
+      <created>1729406786369</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729406786369</updated>
+      <workItem from="1729406787392" duration="247000" />
+      <workItem from="1729407066460" duration="38132000" />
+      <workItem from="1729754583241" duration="29013000" />
+      <workItem from="1730093133789" duration="1155000" />
+      <workItem from="1730094299689" duration="724000" />
+      <workItem from="1730095714096" duration="1717000" />
+      <workItem from="1730186425489" duration="5135000" />
+      <workItem from="1730292571767" duration="2311000" />
+      <workItem from="1730363826291" duration="1208000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/sofuni/exam/web/controllers/ImportController.java</url>
+          <line>58</line>
+          <properties class="sofuni.exam.web.controllers.ImportController" method="importPlanetsConfirm">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
