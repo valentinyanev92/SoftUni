@@ -4,6 +4,7 @@ import app.subscription.model.Subscription;
 import app.wallet.model.Wallet;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.core.annotation.Order;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -26,7 +27,6 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
     private String firstName;
 
     private String lastName;
@@ -56,9 +56,11 @@ public class User {
     private LocalDateTime updatedOn;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
+    @OrderBy("createdOn DESC")
     private List<Subscription> subscriptions = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
+    @OrderBy("createdOn ASC")
     private List<Wallet> wallets = new ArrayList<>();
 
 }

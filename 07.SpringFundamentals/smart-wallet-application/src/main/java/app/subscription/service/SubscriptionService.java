@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Service
 public class SubscriptionService {
 
-    private SubscriptionRepository subscriptionRepository;
+    private final SubscriptionRepository subscriptionRepository;
 
     public SubscriptionService(SubscriptionRepository subscriptionRepository) {
         this.subscriptionRepository = subscriptionRepository;

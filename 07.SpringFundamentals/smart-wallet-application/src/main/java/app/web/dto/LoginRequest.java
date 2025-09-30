@@ -2,13 +2,21 @@ package app.web.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.*;
 
-public record LoginRequest(
+@Builder
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class LoginRequest {
+
         @NotBlank
         @Size(min = 6, max = 24)
-        String username,
+        String username;
+
         @NotBlank
         @Size(min = 6, max = 6)
-        String password
-) {
+        String password;
+
 }

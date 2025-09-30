@@ -1,6 +1,5 @@
 package app.user.service;
 
-import app.subscription.model.Subscription;
 import app.subscription.service.SubscriptionService;
 import app.user.model.User;
 import app.user.model.UserRole;
@@ -15,7 +14,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -36,9 +37,9 @@ public class UserService {
 
     public User login(LoginRequest loginRequest) {
 
-        Optional<User> optionalUser = userRepository.findByUsername(loginRequest.username());
+        Optional<User> optionalUser = userRepository.findByUsername(loginRequest.getUsername());
         if (optionalUser.isEmpty()
-                || !passwordEncoder.matches(loginRequest.password(), optionalUser.get().getPassword())) {
+                || !passwordEncoder.matches(loginRequest.getPassword(), optionalUser.get().getPassword())) {
             throw new RuntimeException("Incorrect username or password");
         }
 
@@ -48,16 +49,16 @@ public class UserService {
     @Transactional
     public User register(RegisterRequest registerRequest) {
 
-        Optional<User> optionalUser = userRepository.findByUsername(registerRequest.username());
+        Optional<User> optionalUser = userRepository.findByUsername(registerRequest.getUsername());
         if (optionalUser.isPresent()) {
-            throw new RuntimeException("User with [%s] already exists.".formatted(registerRequest.username()));
+            throw new RuntimeException("User with [%s] already exists.".formatted(registerRequest.getUsername()));
         }
 
         User user = User.builder()
-                .username(registerRequest.username())
-                .password(passwordEncoder.encode(registerRequest.password()))
+                .username(registerRequest.getUsername())
+                .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .role(UserRole.USER)
-                .country(registerRequest.country())
+                .country(registerRequest.getCountry())
                 .active(true)
                 .createdOn(LocalDateTime.now())
                 .updatedOn(LocalDateTime.now())
@@ -70,5 +71,20 @@ public class UserService {
         log.info("User with username \"[%s]\" has been registered successfully".formatted(user.getUsername()));
 
         return user;
+    }
+
+    public List<User> getAll() {
+
+        return userRepository.findAll();
+    }
+
+
+    public User getByUsername(String username) {
+
+        return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User with [%s] doest not exists.".formatted(username)));
+    }
+
+    public User getById(UUID id) {
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User with [%s] do not exists.".formatted(id)));
     }
 }
