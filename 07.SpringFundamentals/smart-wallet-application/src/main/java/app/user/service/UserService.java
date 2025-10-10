@@ -1,13 +1,17 @@
 package app.user.service;
 
+import app.subscription.model.Subscription;
 import app.subscription.service.SubscriptionService;
 import app.user.model.User;
 import app.user.model.UserRole;
 import app.user.repository.UserRepository;
+import app.wallet.model.Wallet;
 import app.wallet.service.WalletService;
+import app.web.dto.EditProfileRequest;
 import app.web.dto.LoginRequest;
 import app.web.dto.RegisterRequest;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -65,8 +69,11 @@ public class UserService {
                 .build();
 
         user = userRepository.save(user);
-        walletService.createDefaultWallet(user);
-        subscriptionService.createDefaultSubscription(user);
+        Wallet defaultWallet = walletService.createDefaultWallet(user);
+        Subscription defaultSubscription = subscriptionService.createDefaultSubscription(user);
+
+        user.setWallets(List.of(defaultWallet));
+        user.setSubscriptions(List.of(defaultSubscription));
 
         log.info("User with username \"[%s]\" has been registered successfully".formatted(user.getUsername()));
 
@@ -86,5 +93,16 @@ public class UserService {
 
     public User getById(UUID id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User with [%s] do not exists.".formatted(id)));
+    }
+
+    public User editProfile(UUID id, @Valid EditProfileRequest editProfileRequest) {
+
+        User user = userRepository.getReferenceById(id);
+        user.setFirstName(editProfileRequest.getFirstName());
+        user.setLastName(editProfileRequest.getLastName());
+        user.setEmail(editProfileRequest.getEmail());
+        user.setProfilePicture(editProfileRequest.getImageUrl());
+
+        return userRepository.save(user);
     }
 }
