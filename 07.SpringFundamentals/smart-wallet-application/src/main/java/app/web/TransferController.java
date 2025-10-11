@@ -5,6 +5,7 @@ import app.user.model.User;
 import app.user.service.UserService;
 import app.wallet.service.WalletService;
 import app.web.dto.TransferRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.net.CookieHandler;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/transfers")
@@ -28,26 +32,29 @@ public class TransferController {
     }
 
     @GetMapping
-    public ModelAndView getTransferPage() {
+    public ModelAndView getTransferPage(HttpSession session) {
 
-        User user = userService.getDefaultUser();
+        UUID id = (UUID) session.getAttribute("userId");
+        User user = userService.getById(id);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("transfer");
-        modelAndView.addObject("transferRequest",new TransferRequest());
+        modelAndView.addObject("transferRequest", new TransferRequest());
         modelAndView.addObject("user", user);
 
         return modelAndView;
     }
 
     @PostMapping
-    public ModelAndView transferMoney(@Valid TransferRequest transferRequest, BindingResult bindingResult) {
+    public ModelAndView transferMoney(@Valid TransferRequest transferRequest, BindingResult bindingResult, HttpSession session) {
 
         if (bindingResult.hasErrors()) {
-            User user = userService.getDefaultUser();
+            UUID id = (UUID) session.getAttribute("userId");
+            User user = userService.getById(id);
+
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.setViewName("transfer");
-            modelAndView.addObject("user",user);
+            modelAndView.addObject("user", user);
             return modelAndView;
         }
 

@@ -155,10 +155,11 @@
                 </thead>
                 <tbody>
                 <tr th:each="transaction : ${transactions}">
-                    <td th:text="${transaction.id}"></td>
+                    <td><a th:href="@{'/transactions/' + ${transaction.id}}" th:text="${transaction.id}"></a></td>
                     <td>
                         <p th:if="${transaction.status.name() == 'SUCCEEDED'}" class="status active">SUCCEEDED</p>
                         <p th:if="${transaction.status.name() == 'FAILED'}" class="status terminated">FAILED</p>
+                        <p th:if="${transaction.status.name() == 'TERMINATED'}" class="status terminated">TERMINATED</p>
                     </td>
                     <td th:if="${transaction.status.name() == 'FAILED'}" th:text="${transaction.type.name() == 'DEPOSIT' ? '+' + transaction.amount + ' EUR' : '-' + transaction.amount + ' EUR'}" class="crosslined"></td>
                     <td th:if="${transaction.status.name() == 'SUCCEEDED'}" th:text="${transaction.type.name() == 'DEPOSIT' ? '+' + transaction.amount + ' EUR' : '-' + transaction.amount  + ' EUR'}"></td>

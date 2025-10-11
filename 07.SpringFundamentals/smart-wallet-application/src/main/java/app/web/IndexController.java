@@ -5,22 +5,19 @@ import app.transaction.service.TransactionService;
 import app.user.model.User;
 import app.user.property.UserProperties;
 import app.user.service.UserService;
-import app.web.dto.EditProfileRequest;
 import app.web.dto.LoginRequest;
 import app.web.dto.RegisterRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 //@RequestMapping("/")
@@ -47,23 +44,25 @@ public class IndexController {
     }
 
     @GetMapping("/login")
-    public ModelAndView getLoginPage(RedirectAttributes redirectAttributes){
+    public ModelAndView getLoginPage(@RequestParam(name = "loginAttemptMessage", required = false) String message){
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         modelAndView.addObject("loginRequest", new LoginRequest());
+        modelAndView.addObject("loginAttemptMessage", message);
 
         return modelAndView;
     }
 
     @PostMapping("/login")
-    public ModelAndView login(@Valid LoginRequest loginRequest, BindingResult bindingResult){
+    public ModelAndView login(@Valid LoginRequest loginRequest, BindingResult bindingResult, HttpSession session){
 
         if (bindingResult.hasErrors()){
             return new ModelAndView("login");
         }
 
-        userService.login(loginRequest);
+        User loggedUser = userService.login(loginRequest);
+        session.setAttribute("userId", loggedUser.getId());
 
         return new ModelAndView("redirect:/home");
     }
@@ -92,9 +91,10 @@ public class IndexController {
     }
 
     @GetMapping("/home")
-    public ModelAndView getHomePage(){
+    public ModelAndView getHomePage(HttpSession session){
 
-        User user = userService.getByUsername(userProperties.getDefaultUser().getUsername());
+        UUID userId = (UUID) session.getAttribute("userId");
+        User user = userService.getById(userId);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("home");
@@ -103,28 +103,22 @@ public class IndexController {
         return modelAndView;
     }
 
-    @GetMapping("/reports")
-    public ModelAndView getReportsPage(){
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
 
-        User user = userService.getByUsername(userProperties.getDefaultUser().getUsername());
+        session.invalidate();
+        return "redirect:/";
+    }
+
+    @GetMapping("/reports")
+    public ModelAndView getReportsPage(HttpSession session){
+
+        UUID id = (UUID) session.getAttribute("userId");
+        User user = userService.getById(id);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user", user);
         modelAndView.setViewName("reports");
-
-        return modelAndView;
-    }
-
-    @GetMapping("/transactions")
-    public ModelAndView getTransactionsPage(){
-
-        User user = userService.getByUsername(userProperties.getDefaultUser().getUsername());
-        List<Transaction> transactions = transactionService.getByUserId(user.getId());
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user", user);
-        modelAndView.addObject("transactions", transactions);
-        modelAndView.setViewName("transactions");
 
         return modelAndView;
     }

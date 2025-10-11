@@ -45,7 +45,7 @@ public class TransactionService {
     }
 
     public List<Transaction> getByUserId(UUID id) {
-        return transactionRepository.getAllBySender(id.toString());
+        return transactionRepository.findAllByOwnerId(id);
     }
 
     public Transaction upsert(Transaction transaction) {
