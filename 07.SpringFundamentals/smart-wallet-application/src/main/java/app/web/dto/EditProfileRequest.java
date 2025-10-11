@@ -12,10 +12,10 @@ import org.hibernate.validator.constraints.URL;
 @NoArgsConstructor
 public class EditProfileRequest {
 
-    @Size(min = 2, max = 20, message = "First name should be between 2 and 20 symbols")
+    @Size(max = 24, message = "Fist name should be less than 24 symbols")
     String firstName;
 
-    @Size(min = 2, max = 20, message = "Last name should be between 2 and 20 symbols")
+    @Size(max = 24, message = "Last name should be less than 24 symbols")
     String lastName;
 
     @Email(message = "Email should be email")

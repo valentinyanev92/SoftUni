@@ -104,13 +104,13 @@
     <div class="single-section-box profile-menu">
       <div class="profile-header">
           <img th:src="${#strings.isEmpty(user.profilePicture) ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIf4R5qPKHPNMyAqV-FjS_OTBB8pfUV29Phg&s' : user.profilePicture}" alt="Profile Picture" class="profile-avatar">
-        <h2 th:text="${user.getUsername()}" class="profile-name">Mandarin0016</h2>
+        <h2 th:text="${user.username}" class="profile-name">Mandarin0016</h2>
       </div>
 
       <div class="details-section">
         <div class="details-section-container">
           <strong>User id: </strong>
-          <p th:text="${user.getId()}">55b23a12-71a1-4ccd-918d-08b2b09409b0</p>
+          <p th:text="${user.id}">55b23a12-71a1-4ccd-918d-08b2b09409b0</p>
         </div>
         <div class="details-section-container">
           <strong>Last profile update: </strong>
@@ -118,19 +118,23 @@
         </div>
       </div>
 
-      <form class="form" th:object="${editProfileRequest}" th:action="@{/users/profile}" method="post">
+      <form class="form" th:object="${editProfileRequest}" th:action="@{'/users/' + ${user.id} + '/profile'}" th:method="PUT">
 
         <label for="firstName">First Name</label>
         <input type="text" id="firstName" placeholder="First Name" th:field="*{firstName}">
+          <p class="alert-warning" th:if="${#fields.hasErrors('firstName')}"> Invalid first name</p>
 
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" placeholder="Last Name" th:field="*{lastName}">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" placeholder="Last Name" th:field="*{lastName}">
+          <p class="alert-warning" th:if="${#fields.hasErrors('lastName')}"> Invalid last name</p>
 
-        <label for="email">Email</label>
-        <input type="text" id="email" placeholder="Email Address" th:field="*{email}">
+          <label for="email">Email</label>
+          <input type="text" id="email" placeholder="Email Address" th:field="*{email}">
+          <p class="alert-warning" th:if="${#fields.hasErrors('email')}"> Invalid email address</p>
 
-        <label for="profilePicture">Profile Picture URL</label>
-        <input type="text" id="profilePicture" placeholder="Image Link" th:field="*{profilePicture}">
+          <label for="profilePicture">Profile Picture URL</label>
+          <input type="text" id="profilePicture" placeholder="Image Link" th:field="*{imageUrl}">
+          <p class="alert-warning" th:if="${#fields.hasErrors('imageUrl')}"> Invalid image address</p>
 
         <button class="profile-actions-button">
           <p>Save</p>

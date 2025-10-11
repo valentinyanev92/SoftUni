@@ -28,6 +28,7 @@
 
             <h3>Login Here</h3>
 
+            <p class="successful-registration" th:text="${successfulRegistration}"></p>
             <label for="username">Username</label>
             <input type="text" placeholder="Username" id="username" th:field="*{username}">
             <p class="alert-warning" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Invalid username</p>

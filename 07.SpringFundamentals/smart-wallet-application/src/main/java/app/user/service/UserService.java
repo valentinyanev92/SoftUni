@@ -4,6 +4,7 @@ import app.subscription.model.Subscription;
 import app.subscription.service.SubscriptionService;
 import app.user.model.User;
 import app.user.model.UserRole;
+import app.user.property.UserProperties;
 import app.user.repository.UserRepository;
 import app.wallet.model.Wallet;
 import app.wallet.service.WalletService;
@@ -30,13 +31,15 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final WalletService walletService;
     private final SubscriptionService subscriptionService;
+    private final UserProperties userProperties;
 
     @Autowired
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, WalletService walletService, SubscriptionService subscriptionService) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, WalletService walletService, SubscriptionService subscriptionService, UserProperties userProperties) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.walletService = walletService;
         this.subscriptionService = subscriptionService;
+        this.userProperties = userProperties;
     }
 
     public User login(LoginRequest loginRequest) {
@@ -95,14 +98,18 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User with [%s] do not exists.".formatted(id)));
     }
 
-    public User editProfile(UUID id, @Valid EditProfileRequest editProfileRequest) {
+    public void editProfile(UUID id, EditProfileRequest editProfileRequest) {
 
-        User user = userRepository.getReferenceById(id);
+        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User with [%s] do not exists.".formatted(id)));
         user.setFirstName(editProfileRequest.getFirstName());
         user.setLastName(editProfileRequest.getLastName());
         user.setEmail(editProfileRequest.getEmail());
         user.setProfilePicture(editProfileRequest.getImageUrl());
+        userRepository.save(user);
+    }
 
-        return userRepository.save(user);
+    public User getDefaultUser() {
+
+        return getByUsername(userProperties.getDefaultUser().getUsername());
     }
 }

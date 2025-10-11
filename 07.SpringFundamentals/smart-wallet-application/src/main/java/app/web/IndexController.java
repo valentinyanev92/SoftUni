@@ -5,6 +5,7 @@ import app.transaction.service.TransactionService;
 import app.user.model.User;
 import app.user.property.UserProperties;
 import app.user.service.UserService;
+import app.web.dto.EditProfileRequest;
 import app.web.dto.LoginRequest;
 import app.web.dto.RegisterRequest;
 import jakarta.validation.Valid;
@@ -14,8 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -44,7 +47,7 @@ public class IndexController {
     }
 
     @GetMapping("/login")
-    public ModelAndView getLoginPage(){
+    public ModelAndView getLoginPage(RedirectAttributes redirectAttributes){
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
@@ -70,13 +73,13 @@ public class IndexController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("register");
-        modelAndView.addObject("registerRequest", new RegisterRequest());
+        modelAndView.addObject("registerRequest",  new RegisterRequest());
 
         return modelAndView;
     }
 
-    @PostMapping("/register")
-    public ModelAndView registerUser(@Valid RegisterRequest registerRequest, BindingResult bindingResult){
+    @PutMapping("/register")
+    public ModelAndView registerUser(@Valid RegisterRequest registerRequest, BindingResult bindingResult, RedirectAttributes redirectAttributes){
 
         if (bindingResult.hasErrors()){
             return new ModelAndView("register");
@@ -84,6 +87,7 @@ public class IndexController {
 
         userService.register(registerRequest);
 
+        redirectAttributes.addFlashAttribute("successfulRegistration", "You have registered successfully!");
         return new ModelAndView("redirect:/login");
     }
 
