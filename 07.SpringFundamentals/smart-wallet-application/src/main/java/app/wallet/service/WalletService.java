@@ -1,5 +1,6 @@
 package app.wallet.service;
 
+import app.event.SuccessfullyChargeEvent;
 import app.transaction.model.Transaction;
 import app.transaction.model.TransactionStatus;
 import app.transaction.model.TransactionType;
@@ -13,6 +14,7 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -38,9 +40,12 @@ public class WalletService {
     private final WalletRepository walletRepository;
     private final TransactionService transactionService;
 
-    public WalletService(WalletRepository walletRepository, TransactionService transactionService) {
+    private final ApplicationEventPublisher eventPublisher;
+
+    public WalletService(WalletRepository walletRepository, TransactionService transactionService, ApplicationEventPublisher eventPublisher) {
         this.walletRepository = walletRepository;
         this.transactionService = transactionService;
+        this.eventPublisher = eventPublisher;
     }
 
 
@@ -88,6 +93,15 @@ public class WalletService {
             wallet.setBalance(wallet.getBalance().subtract(amount));
             wallet.setUpdatedOn(LocalDateTime.now());
             walletRepository.save(wallet);
+
+            SuccessfullyChargeEvent event = SuccessfullyChargeEvent.builder()
+                    .userId(user.getId())
+                    .walletId(wallet.getId())
+                    .amount(amount)
+                    .email(user.getEmail())
+                    .createdOn(LocalDateTime.now())
+                    .build();
+            eventPublisher.publishEvent(event);
         }
 
         transaction.setBalanceLeft(wallet.getBalance());

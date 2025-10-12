@@ -12,9 +12,10 @@ import app.web.dto.EditProfileRequest;
 import app.web.dto.LoginRequest;
 import app.web.dto.RegisterRequest;
 import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +55,7 @@ public class UserService {
     }
 
     @Transactional
+    @CacheEvict(value = "users", allEntries = true)
     public User register(RegisterRequest registerRequest) {
 
         Optional<User> optionalUser = userRepository.findByUsername(registerRequest.getUsername());
@@ -83,6 +85,7 @@ public class UserService {
         return user;
     }
 
+    @Cacheable("users")
     public List<User> getAll() {
 
         return userRepository.findAll();
@@ -98,6 +101,7 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User with [%s] do not exists.".formatted(id)));
     }
 
+    @CacheEvict(value = "users", allEntries = true)
     public void editProfile(UUID id, EditProfileRequest editProfileRequest) {
 
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User with [%s] do not exists.".formatted(id)));
@@ -113,6 +117,7 @@ public class UserService {
         return getByUsername(userProperties.getDefaultUser().getUsername());
     }
 
+    @CacheEvict(value = "users", allEntries = true)
     public void switchStatus(UUID id) {
 
         User user = getById(id);
@@ -123,6 +128,7 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @CacheEvict(value = "users", allEntries = true)
     public void switchRole(UUID id) {
 
         User user = getById(id);
