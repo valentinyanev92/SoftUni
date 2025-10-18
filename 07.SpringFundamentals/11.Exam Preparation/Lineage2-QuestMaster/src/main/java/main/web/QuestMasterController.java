@@ -15,14 +15,14 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-public class QuestMaster {
+public class QuestMasterController {
 
     private final PlayerService playerService;
     private final ItemService itemService;
     private final QuestService questService;
 
     @Autowired
-    public QuestMaster(PlayerService playerService, ItemService itemService, QuestService questService) {
+    public QuestMasterController(PlayerService playerService, ItemService itemService, QuestService questService) {
         this.playerService = playerService;
         this.itemService = itemService;
         this.questService = questService;
