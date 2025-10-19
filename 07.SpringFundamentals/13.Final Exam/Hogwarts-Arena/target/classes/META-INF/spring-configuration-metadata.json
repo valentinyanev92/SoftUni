@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "",
+      "type": "main.property.SpellsProperties",
+      "sourceType": "main.property.SpellsProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spell-for-registration",
+      "type": "java.util.List<main.property.SpellsProperties$Spell>",
+      "sourceType": "main.property.SpellsProperties"
+    },
+    {
+      "name": "spells",
+      "type": "java.util.List<main.property.SpellsProperties$Spell>",
+      "sourceType": "main.property.SpellsProperties"
+    }
+  ],
+  "hints": []
+}
