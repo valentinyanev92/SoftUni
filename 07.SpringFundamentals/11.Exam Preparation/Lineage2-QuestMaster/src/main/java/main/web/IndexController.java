@@ -2,14 +2,12 @@ package main.web;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import main.model.Item;
 import main.model.Player;
 import main.model.PlayerRole;
-import main.model.Quest;
-import main.service.ItemService;
 import main.service.PlayerService;
-import main.service.QuestService;
-import main.web.dto.*;
+import main.web.dto.LoginRequest;
+import main.web.dto.RegisterRequest;
+import main.web.dto.RoleRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -98,6 +96,7 @@ public class IndexController {
 
         UUID playerId = (UUID) session.getAttribute("playerId");
         Player player = playerService.getById(playerId);
+
 
         playerService.setRole(player, roleRequest);
 
